@@ -16,7 +16,11 @@
 <body>
     <div id="app">
         <div class="my-container">
-            {{message}}
+            <input type="text" v-model="newToDo" >
+            <button class="btn btn-dark ms-2" @click="send()">Invia</button>
+            <ul>
+                <li v-for="todo in todos">{{todo}}</li>
+            </ul>
         </div>
     </div>
 </body>
