@@ -1,15 +1,106 @@
+/*************************Common******************************/
 *{
-    padding: 0;
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 body{
-    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(254, 254, 172);
 
 }
 .my-container{
-    width: 80%;
+    max-width: 600px;
     margin: auto;
-    padding-top: 5rem;
-    
+}
+ul{
+    list-style: none;
+}
+.my-flex{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+/*************************messaggio di errore******************************/
+.my-alarm::after{
+    content: 'Devi inserire almeno 3 caratteri';
+    color: red;
+    font-size: 12px;
+    display: block;
+    text-align: center;
+}
+.message-empty{
+    font-size: 1.1rem;
+    padding: 5px;
+    color: green;
+    background-color: rgba(152, 255, 152,0.6);
+    border-radius: 15px;
+}
+/*************************titoli to do******************************/
+.tasks > div:first-child{
+    padding: 5px;
+}
+.my-input{
+    font-size: 12px;
+    margin-right: 5px;
+}
+.my-btn{
+    font-size: 12px;
+    padding: 2px 12px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+}
+/*************************elementi to do******************************/
+.task{
+    background-color: rgb(167, 167, 167);
+    margin-bottom: 5px;
+    border-radius: 10px;
+    padding: 5px;
+    cursor: pointer;
+    transition: background-color 0.5s;
+}
+/* bottone per il remove task */
+.my-button{
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+.inner-task{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    line-height: 30px;
+}
+.inner-task div{
+    font-size: 20px;
+    line-height: 25px;
+}
+.inner-task div:last-child::first-letter{
+    text-transform: uppercase;
+}
+/* pallini colorati */
+.inner-task div:first-child{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    line-height: 25px;
+}
+
+/*************************elementi fatti e hover******************************/
+.done{
+    text-decoration: line-through 2px;
+}
+.inner-task div.x-done:first-child{
+    background-color: white;
+    color: red;
+}
+.li-done{
+    background-color: lightgrey!important;
+}
+.task:not(.li-done):hover{
+    background-color: white!important;
 }
