@@ -11,9 +11,11 @@ if(isset($_POST['newTodo'])){
     ];
     array_push($todos,$newTodo);
     file_put_contents('./data.json', json_encode($todos));
+} elseif(isset($_POST['index'])){
+    $i = intval($_POST['index']);
+    $todos[$i]->done = !$todos[$i]->done;
+    file_put_contents('./data.json', json_encode($todos));
+} else{
     header('Content-Type: application/json');
     echo json_encode($todos);
-}else{
-    header('Content-Type: application/json');
-    echo json_encode($todos);
-}
+};

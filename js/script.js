@@ -20,7 +20,7 @@ const app = createApp({
         },
         addTask(){
             if(this.newTodo.length >= 3){
-                const data = {'newTodo' : this.newTodo};
+                const data = {newTodo : this.newTodo};
                 axios.post('server.php',
                 data,
                 {headers : {'Content-Type': 'multipart/form-data'}}
@@ -42,7 +42,16 @@ const app = createApp({
             
         },
         taskDone(i){
-            
+            const data = {index : i};
+            axios.post('server.php',
+            data,
+            {headers : {'Content-Type': 'multipart/form-data'}},
+            ).then(
+                (response) =>{
+                    // console.log(response.data);
+                    this.getList();
+                }
+            )
         },
         mod(i){  //funzione per ciclare l'array dei colori 
             return i%this.colors.length

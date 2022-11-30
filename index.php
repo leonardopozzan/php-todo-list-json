@@ -35,7 +35,7 @@
                                     <div v-else :style="{backgroundColor : `${colorsCircle[mod(i)]}`}"></div>
                                     <div class="ms-2" :class="{'done':todo.done}">{{todo.testo}}</div>
                                 </div>
-                                <button @click="removeTask(todo,j)" class="my-button"><i class="fa-solid fa-minus"></i></button>
+                                <button @click="removeTask(i)" class="my-button"><i class="fa-solid fa-minus"></i></button>
                             </li>
                         </ul>
                         <div v-else class="message-empty">
