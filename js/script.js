@@ -4,7 +4,7 @@ const app = createApp({
     data(){
         return{
             newToDo : '',
-            todos : ['spesa','benzina']
+            todos : []
         }
     },
     methods:{
@@ -14,7 +14,17 @@ const app = createApp({
                     this.todos.unshift(response.data);
                 }
             )
+        },
+        getList(){
+            axios.get('server.php').then(
+                (response) => {
+                    this.todos=[...response.data];
+                }
+            )
         }
+    },
+    mounted() {
+        this.getList();
     }
 })
 
