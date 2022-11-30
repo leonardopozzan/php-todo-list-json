@@ -9,13 +9,18 @@ if(isset($_POST['newTodo'])){
         'testo' => $_POST['newTodo'],
         'done' => false
     ];
-    array_push($todos,$newTodo);
+    array_unshift($todos,$newTodo);
     file_put_contents('./data.json', json_encode($todos));
-} elseif(isset($_POST['index'])){
+} elseif(isset($_POST['index']) && isset($_GET['done'])){
     $i = intval($_POST['index']);
     $todos[$i]->done = !$todos[$i]->done;
     file_put_contents('./data.json', json_encode($todos));
-} else{
+}elseif(isset($_POST['index']) && isset($_GET['delete'])){
+    var_dump('sono qui');
+    $i = intval($_POST['index']);
+    array_splice($todos,$i,1);
+    file_put_contents('./data.json', json_encode($todos));
+}else{
     header('Content-Type: application/json');
     echo json_encode($todos);
 };

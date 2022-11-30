@@ -38,12 +38,21 @@ const app = createApp({
                 this.newTodo = '';
             }
         },
-        removeTask(todo){
-            
+        removeTask(i){
+            const data = {index : i};
+            axios.post('server.php?delete',
+            data,
+            {headers : {'Content-Type': 'multipart/form-data'}},
+            ).then(
+                (response) =>{
+                    // console.log(response.data);
+                    this.getList();
+                }
+            )
         },
         taskDone(i){
             const data = {index : i};
-            axios.post('server.php',
+            axios.post('server.php?done',
             data,
             {headers : {'Content-Type': 'multipart/form-data'}},
             ).then(
