@@ -17,7 +17,7 @@
         <div class="my-container">
             <div class="text-center mb-4" :class="{'my-alarm' : alarm}">
                 <h1 class="my-4 fst-italic">To do List</h1>
-                <input type="text" v-model="newTodo">
+                <input type="text" v-model="newTodo" @keyup.enter="addTask()">
                 <button class="btn btn-dark ms-2" @click="addTask()" >Add Task</button>
             </div>
             <div>
